@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>🥘 Receptgenerator</h1>
+      <h1>DISHcovery</h1>
       <SearchBar onSearch={handleSearch} />
       <RecipeList recipes={recipes} />
     </div>
