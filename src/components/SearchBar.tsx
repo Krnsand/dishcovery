@@ -16,7 +16,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   padding: 10px 15px;
-  background-color: #ff5a5f;
+  background-color: rgb(90, 176, 140);
   color: white;
   border: none;
   border-radius: 5px;
