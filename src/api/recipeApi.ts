@@ -1,5 +1,5 @@
-// src/api/recipeApi.ts
-const API_KEY = "5bd5c3c84e1647889dedde41889f5bc3"; // Registrera dig på Spoonacular och ersätt denna
+
+const API_KEY = "5bd5c3c84e1647889dedde41889f5bc3"; 
 const BASE_URL = "https://api.spoonacular.com/recipes";
 
 export const fetchRecipesByIngredients = async (ingredients: string) => {
