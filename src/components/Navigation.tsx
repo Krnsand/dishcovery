@@ -5,7 +5,7 @@ const Nav = styled.nav`
   display: flex;
   gap: 15px;
   background: rgb(90, 176, 140);
-  padding: 10px;
+  padding: 20px;
   color: white;
   justify-content: center;
 `;
@@ -14,6 +14,7 @@ const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-weight: bold;
+  font-size: 25px;
 `;
 
 const Navigation = () => {
