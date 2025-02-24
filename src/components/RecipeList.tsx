@@ -5,10 +5,21 @@ const ListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  width: 100%;
+  max-width: 800px;
 `;
 
 const RecipeCard = styled.div`
   text-align: center;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const RecipeImage = styled.img`

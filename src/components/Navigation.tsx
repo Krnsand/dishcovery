@@ -4,14 +4,14 @@ import styled from "styled-components";
 const Nav = styled.nav`
   display: flex;
   gap: 15px;
-  background: rgb(90, 176, 140);
+  background-color: ${(props) => props.theme.colors.secondary};
   padding: 20px;
-  color: white;
+  color: ${(props) => props.theme.colors.background};
   justify-content: center;
 `;
 
 const StyledLink = styled(Link)`
-  color: white;
+  color: ${(props) => props.theme.colors.background};
   text-decoration: none;
   font-weight: bold;
   font-size: 25px;
