@@ -6,7 +6,8 @@ const ListContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
+  margin: 0 auto;
 `;
 
 const RecipeCard = styled.div`
@@ -24,6 +25,8 @@ const RecipeCard = styled.div`
 
 const RecipeImage = styled.img`
   width: 100%;
+  height: 150px;
+  object-fit: cover;
   border-radius: 10px;
 `;
 
@@ -32,6 +35,10 @@ interface RecipeListProps {
 }
 
 const RecipeList = ({ recipes }: RecipeListProps) => {
+  if (!recipes || recipes.length === 0) {
+    return <p>❌ No recipes found! Please try another search!</p>;
+  }
+
   return (
     <ListContainer>
       {recipes.map((recipe) => (

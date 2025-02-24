@@ -9,7 +9,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: ${(props) => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.background};
   min-height: 100vh;
 `;
 
@@ -29,7 +29,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Home = () => {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState<any[]>([]);
 
   const handleSearch = async (ingredients: string) => {
     const results = await fetchRecipesByIngredients(ingredients);

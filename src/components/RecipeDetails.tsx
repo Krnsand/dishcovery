@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { fetchRecipeById } from "../api/recipeApi";
+import { fetchRecipeDetails } from "../api/recipeApi";
 
 const Container = styled.div`
   max-width: 800px;
@@ -31,31 +31,58 @@ const IngredientItem = styled.li`
 const RecipeDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [recipe, setRecipe] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  console.log("🔍 RecipeDetails laddades! ID:", id);
 
   useEffect(() => {
-    console.log("Fetching recipe with ID:", id);
-    const loadRecipe = async () => {
-      const data = await fetchRecipeById(id);
-      console.log("Receptdata:", data);
-      setRecipe(data);
-    };
-    loadRecipe();
+    if (!id) {
+      setError("Recept-ID saknas.");
+      setLoading(false);
+      return;
+    }
+
+    fetchRecipeDetails(Number(id))
+      .then((data) => {
+        if (data && !data.code) {
+          console.log("✅ Hämtade receptdetaljer:", data);
+          setRecipe(data);
+        } else {
+          setError("Receptet kunde inte hämtas.");
+        }
+      })
+      .catch((error) => {
+        console.error("❌ Fel vid hämtning av receptdetaljer:", error);
+        setError("Ett fel uppstod vid hämtning av receptdetaljer.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [id]);
 
-  if (!recipe) return <p>Loading Recipe...</p>;
+  if (loading) return <p>🔄 Laddar recept...</p>;
+  if (error) return <p>❌ {error}</p>;
+  if (!recipe) return <p>❌ Ingen receptdata hittades.</p>;
 
   return (
     <Container>
       <RecipeTitle>{recipe.title}</RecipeTitle>
       <RecipeImage src={recipe.image} alt={recipe.title} />
+
       <h2>Ingredients</h2>
       <IngredientsList>
-        {recipe.ingredients.map((ingredient: string, index: number) => (
-          <IngredientItem key={index}>{ingredient}</IngredientItem>
-        ))}
+        {recipe.extendedIngredients?.map((ingredient: any, index: number) => (
+          <IngredientItem key={index}>{ingredient.name}</IngredientItem>
+        )) ?? <p>❌ Ingredienser saknas.</p>}
       </IngredientsList>
-      <h2>Instructions</h2>
-      <p>{recipe.instructions}</p>
+
+      <h2>Instructions:</h2>
+      <p>
+        {recipe.instructions
+          ? recipe.instructions
+          : "Ingen instruktion tillgänglig."}
+      </p>
     </Container>
   );
 };

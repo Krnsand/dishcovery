@@ -19,7 +19,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   padding: 10px 15px;
-  background-color: ${(props) => props.theme.colors.primary};
+  background: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.background};
   border: none;
   border-radius: 5px;
