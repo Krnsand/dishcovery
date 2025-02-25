@@ -34,8 +34,6 @@ const RecipeDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  console.log("🔍 RecipeDetails laddades! ID:", id);
-
   useEffect(() => {
     if (!id) {
       setError("Recept-ID saknas.");
@@ -46,14 +44,12 @@ const RecipeDetails = () => {
     fetchRecipeDetails(Number(id))
       .then((data) => {
         if (data && !data.code) {
-          console.log("✅ Hämtade receptdetaljer:", data);
           setRecipe(data);
         } else {
           setError("Receptet kunde inte hämtas.");
         }
       })
       .catch((error) => {
-        console.error("❌ Fel vid hämtning av receptdetaljer:", error);
         setError("Ett fel uppstod vid hämtning av receptdetaljer.");
       })
       .finally(() => {
