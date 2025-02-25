@@ -32,10 +32,11 @@ const RecipeImage = styled.img`
 
 interface RecipeListProps {
   recipes: { id: number; title: string; image: string }[];
+  hasSearched: boolean;
 }
 
-const RecipeList = ({ recipes }: RecipeListProps) => {
-  if (!recipes || recipes.length === 0) {
+const RecipeList = ({ recipes, hasSearched }: RecipeListProps) => {
+  if (hasSearched && recipes.length === 0) {
     return <p>❌ No recipes found! Please try another search!</p>;
   }
 

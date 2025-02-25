@@ -30,8 +30,12 @@ const ContentWrapper = styled.div`
 
 const Home = () => {
   const [recipes, setRecipes] = useState<any[]>([]);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearch = async (ingredients: string) => {
+    if (!ingredients.trim()) return;
+    setHasSearched(true);
+
     const results = await fetchRecipesByIngredients(ingredients);
     setRecipes(results);
   };
@@ -41,7 +45,7 @@ const Home = () => {
       <Title>🍽️ DISHcovery</Title>
       <ContentWrapper>
         <SearchBar onSearch={handleSearch} />
-        <RecipeList recipes={recipes} />
+        <RecipeList recipes={recipes} hasSearched={hasSearched} />
       </ContentWrapper>
     </Container>
   );
