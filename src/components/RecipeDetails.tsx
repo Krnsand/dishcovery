@@ -149,8 +149,4 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
   margin: 10px 0;
-
-  &:hover {
-    background-color: ${(props) => props.theme.colors.secondary};
-  }
 `;
