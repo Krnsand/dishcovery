@@ -8,6 +8,7 @@ const Container = styled.div`
   margin: auto;
   padding: 20px;
   text-align: center;
+  background: ${(props) => props.theme.colors.background};
 `;
 
 const RecipeImage = styled.img`
@@ -17,6 +18,7 @@ const RecipeImage = styled.img`
 
 const RecipeTitle = styled.h1`
   color: ${(props) => props.theme.colors.primary};
+  font-family: Jacques Francois Shadow;
 `;
 
 const IngredientsList = styled.ul`
@@ -25,13 +27,14 @@ const IngredientsList = styled.ul`
 `;
 
 const IngredientItem = styled.li`
-  padding: 5px 0;
+  padding: 3px 0;
 `;
 
 const Button = styled.button`
   background: ${(props) => props.theme.colors.primary};
-  color: white;
+  color: ${(props) => props.theme.colors.background};
   padding: 10px 15px;
+  font-size: 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;

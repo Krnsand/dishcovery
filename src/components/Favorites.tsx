@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -15,6 +16,7 @@ const Title = styled.h1`
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
   margin-bottom: 20px;
+  font-family: Jacques Francois Shadow;
 `;
 
 const ContentWrapper = styled.div`
@@ -43,23 +45,35 @@ const RecipeItem = styled.li`
 `;
 
 const RecipeImage = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 80px;
   border-radius: 8px;
   margin-right: 10px;
 `;
 
-const RecipeTitle = styled.p`
+const RecipeTitle = styled(Link)`
   flex-grow: 1;
+  color: ${(props) => props.theme.colors.primary};
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const RemoveButton = styled.button`
-  background: red;
-  color: white;
+  background-color: #a80303;
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.primary};
+  }
 `;
 
 const Favorites = () => {
@@ -80,7 +94,7 @@ const Favorites = () => {
 
   return (
     <Container>
-      <Title>⭐ My Favorites</Title>
+      <Title>⭐ My Favorites ⭐</Title>
       <ContentWrapper>
         {favorites.length === 0 ? (
           <p>❌ You have not saved any favorites</p>
@@ -89,7 +103,10 @@ const Favorites = () => {
             {favorites.map((recipe) => (
               <RecipeItem key={recipe.id}>
                 <RecipeImage src={recipe.image} alt={recipe.title} />
-                <RecipeTitle>{recipe.title}</RecipeTitle>
+                <RecipeTitle to={`/recipe/${recipe.id}`}>
+                  {recipe.title}
+                </RecipeTitle>
+
                 <RemoveButton onClick={() => handleRemoveFavorite(recipe.id)}>
                   ❌
                 </RemoveButton>
