@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     background: ${(props) => props.theme.colors.background};
     margin: 0;
     padding: 0;
-    font-family: Yusei Magic, Jacques Francois Shadow, sans-serif;
+    font-family: Poiret One, Jacques Francois Shadow, Borel, sans-serif;
   }
 `;
 
