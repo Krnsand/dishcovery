@@ -16,6 +16,12 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
     onSearch(input);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <SearchContainer>
       <Input
@@ -23,6 +29,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="What do I have..."
         aria-label="Enter ingredients"
       />
@@ -56,9 +63,4 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
-  &:hover {
-    background: ${(props) => props.theme.colors.secondary};
-    color: ${(props) => props.theme.colors.primary};
-  }
 `;
