@@ -1,3 +1,28 @@
+# DISHcovery!
+
+### The app that lets you discover the food you have at home!
+
+### Krav för Godkänt
+
+- [x] Projektet innehåller och använder minst 6 stycken komponenter varav minst 2 stycken är “statefulla"-komponenter.
+- [x] React Router har använts för att dynamiskt uppdatera URL’en.
+- [x] Git & GitHub har använts.
+- [x] Projektmappen innehåller en README.md fil - (läs ovan för mer info)
+- [] Uppgiften lämnas in i tid!
+- [] Muntlig presentation är genomförd
+
+_Gjorda krav ska kryssas för._
+
+### Krav för Väl Godkänt
+
+- [ ] Alla punkter för godkänt är uppfyllda
+- [x] Ett “CSS i JS“ lib skall användas för att skriva CSS (ex JSS, Styled-Components, mm).
+- [x] Data från ett web-API hämtas och visas på sidan.
+
+_Gjorda krav ska kryssas för._
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -18,11 +43,11 @@ export default tseslint.config({
   languageOptions: {
     // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
@@ -31,11 +56,11 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from "eslint-plugin-react";
 
 export default tseslint.config({
   // Set the react version
-  settings: { react: { version: '18.3' } },
+  settings: { react: { version: "18.3" } },
   plugins: {
     // Add the react plugin
     react,
@@ -44,7 +69,7 @@ export default tseslint.config({
     // other rules...
     // Enable its recommended rules
     ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
+    ...react.configs["jsx-runtime"].rules,
   },
-})
+});
 ```
