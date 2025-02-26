@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo3.png";
 
 const Nav = styled.nav`
   display: flex;
@@ -26,29 +26,35 @@ const LinksContainer = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledNavLink = styled(NavLink)`
   color: ${(props) => props.theme.colors.primary};
   text-decoration: none;
   font-weight: bold;
   font-size: 30px;
-  font-family: "Jacques Francois Shadow";
+  font-family: "Poiret One";
+
+  &.active {
+    text-decoration: underline;
+    color: ${(props) => props.theme.colors.primary};
+  }
 `;
 
 const Logo = styled.img`
   height: 120px;
   width: auto;
   margin-right: auto;
+  margin-left: 2rem;
 `;
 
 const Navigation = () => {
   return (
     <Nav>
-      <Link to="/">
+      <NavLink to="/">
         <Logo src={logo} alt="Dishcovery Logo" />
-      </Link>
+      </NavLink>
       <LinksContainer>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/favorites">Favorites</StyledLink>
+        <StyledNavLink to="/">Home</StyledNavLink>
+        <StyledNavLink to="/favorites">Favorites</StyledNavLink>
       </LinksContainer>
     </Nav>
   );
