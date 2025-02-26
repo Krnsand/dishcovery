@@ -9,7 +9,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background: ${(props) => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.gradient};
   min-height: 100vh;
 `;
 
