@@ -2,12 +2,28 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/images/logo3.png";
 
+const Navigation = () => {
+  return (
+    <Nav>
+      <NavLink to="/">
+        <Logo src={logo} alt="Dishcovery Logo" />
+      </NavLink>
+      <LinksContainer>
+        <StyledNavLink to="/">Home</StyledNavLink>
+        <StyledNavLink to="/favorites">Favorites</StyledNavLink>
+      </LinksContainer>
+    </Nav>
+  );
+};
+
+export default Navigation;
+
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Sprider ut elementen */
+  justify-content: space-between;
   background-color: ${(props) => props.theme.colors.secondary};
-  padding: 15px;
+  padding: 10px;
   color: ${(props) => props.theme.colors.background};
 `;
 
@@ -45,19 +61,3 @@ const Logo = styled.img`
   margin-right: auto;
   margin-left: 2rem;
 `;
-
-const Navigation = () => {
-  return (
-    <Nav>
-      <NavLink to="/">
-        <Logo src={logo} alt="Dishcovery Logo" />
-      </NavLink>
-      <LinksContainer>
-        <StyledNavLink to="/">Home</StyledNavLink>
-        <StyledNavLink to="/favorites">Favorites</StyledNavLink>
-      </LinksContainer>
-    </Nav>
-  );
-};
-
-export default Navigation;
