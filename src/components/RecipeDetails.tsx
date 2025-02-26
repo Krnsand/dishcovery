@@ -1,66 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { fetchRecipeDetails } from "../api/recipeApi";
 
-const Container = styled.div`
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
-  background: ${(props) => props.theme.colors.background};
-`;
-
-const RecipeImage = styled.img`
-  width: 100%;
-  border-radius: 10px;
-`;
-
-const RecipeTitle = styled.h1`
-  color: ${(props) => props.theme.colors.primary};
-  font-family: Borel;
-`;
-
-const IngHeader = styled.h2`
-  font-size: 30px;
-  text-decoration: underline;
-`;
-
-const IngredientsList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-const IngredientItem = styled.li`
-  padding: 3px 0;
-  font-weight: 600;
-  font-size: 20px;
-`;
-
-const Instructions = styled.p`
-  font-weight: 900;
-  font-size: 20px;
-  margin-bottom: 6rem;
-`;
-
-const Button = styled.button`
-  background: ${(props) => props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.background};
-  padding: 10px 15px;
-  font-size: 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-
-  &:hover {
-    background: ${(props) => props.theme.colors.secondary};
-    color: ${(props) => props.theme.colors.primary};
-  }
-`;
-
 const RecipeDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -86,7 +31,7 @@ const RecipeDetails = () => {
           setError("Recipe could not be fetched.");
         }
       })
-      .catch((error) => {
+      .catch(() => {
         setError("An error occurred when fetching recipe details.");
       })
       .finally(() => {
@@ -99,7 +44,9 @@ const RecipeDetails = () => {
     let savedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
     if (isFavorite) {
-      savedFavorites = savedFavorites.filter((fav: any) => fav.id != recipe.id);
+      savedFavorites = savedFavorites.filter(
+        (fav: any) => fav.id !== recipe.id
+      );
     } else {
       savedFavorites.push({
         id: recipe.id,
@@ -118,27 +65,92 @@ const RecipeDetails = () => {
 
   return (
     <Container>
-      <RecipeTitle>{recipe.title}</RecipeTitle>
-      <RecipeImage src={recipe.image} alt={recipe.title} />
-      <Button onClick={handleFavoriteToggle}>
-        {isFavorite ? "⭐ Remove from favorites" : "⭐ Add to favorites"}
-      </Button>
-
-      <IngHeader>Ingredients</IngHeader>
-      <IngredientsList>
-        {recipe.extendedIngredients?.map((ingredient: any, index: number) => (
-          <IngredientItem key={index}>{ingredient.name}</IngredientItem>
-        )) ?? <p>❌ Ingredients missing.</p>}
-      </IngredientsList>
-
-      <IngHeader>Instructions:</IngHeader>
-      <Instructions>
-        {recipe.instructions
-          ? recipe.instructions
-          : "No instructions available."}
-      </Instructions>
+      <Button onClick={() => navigate(-1)}>⬅ Go Back</Button>{" "}
+      <RecipeContainer>
+        <RecipeTitle>{recipe.title}</RecipeTitle>
+        <RecipeImage src={recipe.image} alt={recipe.title} />
+        <Button onClick={handleFavoriteToggle}>
+          {isFavorite ? "⭐ Remove from favorites" : "⭐ Add to favorites"}
+        </Button>
+        <IngHeader>Ingredients:</IngHeader>
+        <ul>
+          {recipe.extendedIngredients?.map((ingredient: any, index: number) => (
+            <IngredientItem key={index}>{ingredient.name}</IngredientItem>
+          )) ?? <p>❌ Ingredients missing.</p>}
+        </ul>
+        <IngHeader>Instructions:</IngHeader>
+        <Instructions>
+          {recipe.instructions
+            ? recipe.instructions
+            : "No instructions available."}
+        </Instructions>
+      </RecipeContainer>
     </Container>
   );
 };
 
 export default RecipeDetails;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+`;
+
+const RecipeContainer = styled.div`
+  background: ${(props) => props.theme.colors.background};
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 3rem;
+  border-radius: 10px;
+`;
+
+const RecipeTitle = styled.h1`
+  font-size: 2.5rem;
+  color: ${(props) => props.theme.colors.primary};
+  text-align: center;
+  font-family: Borel;
+`;
+
+const RecipeImage = styled.img`
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+`;
+
+const IngHeader = styled.h2`
+  font-size: 30px;
+  text-decoration: underline;
+`;
+
+const IngredientItem = styled.li`
+  padding: 3px 0;
+  font-weight: 600;
+  font-size: 20px;
+`;
+
+const Instructions = styled.p`
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 6rem;
+  max-width: 700px;
+`;
+
+const Button = styled.button`
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: ${(props) => props.theme.colors.primary};
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.secondary};
+  }
+`;

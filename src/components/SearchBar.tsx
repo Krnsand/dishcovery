@@ -1,5 +1,37 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+
+interface SearchBarProps {
+  onSearch: (ingredients: string) => void;
+}
+
+const SearchBar = ({ onSearch }: SearchBarProps) => {
+  const [input, setInput] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleSearch = () => {
+    if (!input.trim()) return;
+    setSearchParams({ search: input });
+    onSearch(input);
+  };
+
+  return (
+    <SearchContainer>
+      <Input
+        id="ingredient-search"
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="What do I have..."
+        aria-label="Enter ingredients"
+      />
+      <Button onClick={handleSearch}>Search</Button>
+    </SearchContainer>
+  );
+};
+
+export default SearchBar;
 
 const SearchContainer = styled.div`
   display: flex;
@@ -30,27 +62,3 @@ const Button = styled.button`
     color: ${(props) => props.theme.colors.primary};
   }
 `;
-
-interface SearchBarProps {
-  onSearch: (ingredients: string) => void;
-}
-
-const SearchBar = ({ onSearch }: SearchBarProps) => {
-  const [input, setInput] = useState("");
-
-  return (
-    <SearchContainer>
-      <Input
-        id="ingredient-search" // ID kopplat till label
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="What do I have..."
-        aria-label="Enter ingredients"
-      />
-      <Button onClick={() => onSearch(input)}>Search</Button>
-    </SearchContainer>
-  );
-};
-
-export default SearchBar;
