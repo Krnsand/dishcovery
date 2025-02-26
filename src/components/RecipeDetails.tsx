@@ -18,7 +18,7 @@ const RecipeImage = styled.img`
 
 const RecipeTitle = styled.h1`
   color: ${(props) => props.theme.colors.primary};
-  font-family: Jacques Francois Shadow;
+  font-family: Borel;
 `;
 
 const IngredientsList = styled.ul`
@@ -28,6 +28,7 @@ const IngredientsList = styled.ul`
 
 const IngredientItem = styled.li`
   padding: 3px 0;
+  font-weight: 600;
 `;
 
 const Button = styled.button`

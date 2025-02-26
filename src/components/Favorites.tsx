@@ -16,7 +16,7 @@ const Title = styled.h1`
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
   margin-bottom: 20px;
-  font-family: Jacques Francois Shadow;
+  font-family: Borel;
 `;
 
 const ContentWrapper = styled.div`
