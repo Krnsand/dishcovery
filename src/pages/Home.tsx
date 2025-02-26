@@ -18,7 +18,7 @@ const Title = styled.h1`
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
   margin-bottom: 0;
-  font-family: Jacques Francois Shadow;
+  font-family: Borel;
 `;
 
 const SubText = styled.h2`
@@ -26,6 +26,7 @@ const SubText = styled.h2`
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 0;
 `;
 
 const ContentWrapper = styled.div`
@@ -34,6 +35,14 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const HomeText = styled.p`
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.colors.primary};
+  text-align: center;
+  margin-bottom: 20px;
+  width: 60%;
 `;
 
 const Home = () => {
@@ -56,6 +65,15 @@ const Home = () => {
         <SearchBar onSearch={handleSearch} />
         <RecipeList recipes={recipes} hasSearched={hasSearched} />
       </ContentWrapper>
+      <HomeText>
+        Got ingredients but no idea what to cook? Let DISHcovery do the work!
+        Simply enter what you have in your kitchen, and we'll find delicious
+        recipes that match. No more food waste, no more last-minute grocery
+        runs—just easy, tasty meals made with what you already own.
+        <br />
+        <br />
+        Start discovering now and turn your pantry into endless possibilities!
+      </HomeText>
     </Container>
   );
 };
