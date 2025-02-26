@@ -18,6 +18,7 @@ const Title = styled.h1`
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
   margin-bottom: 0;
+  font-family: Jacques Francois Shadow;
 `;
 
 const SubText = styled.h2`
@@ -49,7 +50,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Title>🍽️ DISHcovery</Title>
+      <Title>🍽️ DISHcovery 🍽️ </Title>
       <SubText>Discover your food at home</SubText>
       <ContentWrapper>
         <SearchBar onSearch={handleSearch} />
