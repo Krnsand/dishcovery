@@ -21,6 +21,11 @@ const RecipeTitle = styled.h1`
   font-family: Borel;
 `;
 
+const IngHeader = styled.h2`
+  font-size: 30px;
+  text-decoration: underline;
+`;
+
 const IngredientsList = styled.ul`
   list-style: none;
   padding: 0;
@@ -29,6 +34,13 @@ const IngredientsList = styled.ul`
 const IngredientItem = styled.li`
   padding: 3px 0;
   font-weight: 600;
+  font-size: 20px;
+`;
+
+const Instructions = styled.p`
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 6rem;
 `;
 
 const Button = styled.button`
@@ -112,19 +124,19 @@ const RecipeDetails = () => {
         {isFavorite ? "⭐ Remove from favorites" : "⭐ Add to favorites"}
       </Button>
 
-      <h2>Ingredients</h2>
+      <IngHeader>Ingredients</IngHeader>
       <IngredientsList>
         {recipe.extendedIngredients?.map((ingredient: any, index: number) => (
           <IngredientItem key={index}>{ingredient.name}</IngredientItem>
         )) ?? <p>❌ Ingredients missing.</p>}
       </IngredientsList>
 
-      <h2>Instructions:</h2>
-      <p>
+      <IngHeader>Instructions:</IngHeader>
+      <Instructions>
         {recipe.instructions
           ? recipe.instructions
           : "No instructions available."}
-      </p>
+      </Instructions>
     </Container>
   );
 };

@@ -22,7 +22,7 @@ const RecipeImage = styled.img`
 `;
 
 const RecipeTitle = styled.h3`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-top: 10px;
   color: ${(props) => props.theme.colors.primary};
 `;
