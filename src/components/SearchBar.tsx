@@ -41,10 +41,12 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
   return (
     <SearchContainer>
       <Input
+        id="ingredient-search" // ID kopplat till label
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="What do I have....."
+        placeholder="What do I have..."
+        aria-label="Enter ingredients"
       />
       <Button onClick={() => onSearch(input)}>Search</Button>
     </SearchContainer>
