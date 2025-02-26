@@ -39,6 +39,7 @@ const Button = styled.button`
 
   &:hover {
     background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 

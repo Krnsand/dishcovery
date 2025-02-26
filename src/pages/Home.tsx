@@ -17,6 +17,13 @@ const Title = styled.h1`
   font-size: 2.5rem;
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
+  margin-bottom: 0;
+`;
+
+const SubText = styled.h2`
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.colors.primary};
+  text-align: center;
   margin-bottom: 20px;
 `;
 
@@ -43,6 +50,7 @@ const Home = () => {
   return (
     <Container>
       <Title>🍽️ DISHcovery</Title>
+      <SubText>Discover your food at home</SubText>
       <ContentWrapper>
         <SearchBar onSearch={handleSearch} />
         <RecipeList recipes={recipes} hasSearched={hasSearched} />

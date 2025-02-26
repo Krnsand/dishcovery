@@ -26,7 +26,8 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #e0484d;
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
