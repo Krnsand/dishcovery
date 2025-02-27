@@ -38,7 +38,8 @@ const Home = () => {
         <HomeText>
           Got ingredients but no idea what to cook? Let DISHcovery do the work!
           Simply enter what you have in your kitchen, and we'll find delicious
-          recipes that match.
+          recipes that match. No more food waste, no more last-minute grocery
+          runs—just easy, tasty meals made with what you already own.
           <br />
           <br />
           Start discovering now and turn your pantry into endless possibilities!
@@ -80,6 +81,7 @@ const SubText = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 1.2rem;
+    font-weight: 900px;
   }
 `;
 
@@ -106,5 +108,6 @@ const HomeText = styled.p`
   @media (max-width: 768px) {
     font-size: 1.2rem;
     width: 90%;
+    font-weight: 900px;
   }
 `;

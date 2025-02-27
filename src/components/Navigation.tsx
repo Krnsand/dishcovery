@@ -47,12 +47,13 @@ const MenuIcon = styled.div`
 
   @media (max-width: 768px) {
     display: block;
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
 const LinksContainer = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 30px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -63,7 +64,7 @@ const LinksContainer = styled.div`
     top: 100%;
     left: 50;
     width: 100%;
-    background-color: ${(props) => props.theme.colors.secondary};
+    background-color: ${(props) => props.theme.colors.primary};
     text-align: center;
     padding: 10px 0;
     display: ${({ menuOpen }) => (menuOpen ? "flex" : "none")};
@@ -86,6 +87,12 @@ const StyledNavLink = styled(NavLink)`
   @media (max-width: 768px) {
     font-size: 24px;
     padding: 10px 0;
+    color: ${(props) => props.theme.colors.secondary};
+
+    &.active {
+      text-decoration: underline;
+      color: ${(props) => props.theme.colors.secondary};
+    }
   }
 `;
 

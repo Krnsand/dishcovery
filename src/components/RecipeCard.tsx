@@ -1,6 +1,23 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+interface RecipeCardProps {
+  recipe: { id: number; title: string; image: string };
+}
+
+const RecipeCard = ({ recipe }: RecipeCardProps) => {
+  return (
+    <Card>
+      <Link to={`/recipe/${recipe.id}`}>
+        <RecipeImage src={recipe.image} alt={recipe.title} />
+        <RecipeTitle>{recipe.title}</RecipeTitle>
+      </Link>
+    </Card>
+  );
+};
+
+export default RecipeCard;
+
 const Card = styled.div`
   background: white;
   padding: 15px;
@@ -26,20 +43,3 @@ const RecipeTitle = styled.h3`
   margin-top: 10px;
   color: ${(props) => props.theme.colors.primary};
 `;
-
-interface RecipeCardProps {
-  recipe: { id: number; title: string; image: string };
-}
-
-const RecipeCard = ({ recipe }: RecipeCardProps) => {
-  return (
-    <Card>
-      <Link to={`/recipe/${recipe.id}`}>
-        <RecipeImage src={recipe.image} alt={recipe.title} />
-        <RecipeTitle>{recipe.title}</RecipeTitle>
-      </Link>
-    </Card>
-  );
-};
-
-export default RecipeCard;
