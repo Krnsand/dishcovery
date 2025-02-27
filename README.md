@@ -2,6 +2,24 @@
 
 ### The app that lets you discover the food you have at home!
 
+![Responsive Mockup](https://github.com/Krnsand/dishcovery/blob/main/src/assets/images/am-i-responsive.png)
+
+[Click to View Live Website](https://dishcovery-ten.vercel.app/)
+
+### Beskriving
+
+Det här projektet gick up på att bygga en valfri app och använda sig av ett api och ett “CSS i JS“ lib för Väl Godkänt.\
+Jag har byggt en sorts"receptgenerator" för att man ska kunna få inspiration av den mat man har hemma! Jag har använt mig av Styled Components för styling, samt api:et "Spoonacular" för att hämta recept utifrån ingredienserna man kan söka på.
+
+Appen har byggs från grunden genom att i terminalen köra
+
+- npm init vite@latest
+- React och Typescript
+- npm install
+- npm run dev
+
+och sedan grotta sig ner i React.
+
 ### Krav för Godkänt
 
 - [x] Projektet innehåller och använder minst 6 stycken komponenter varav minst 2 stycken är “statefulla"-komponenter.
@@ -11,15 +29,11 @@
 - [] Uppgiften lämnas in i tid!
 - [] Muntlig presentation är genomförd
 
-_Gjorda krav ska kryssas för._
-
 ### Krav för Väl Godkänt
 
 - [ ] Alla punkter för godkänt är uppfyllda
 - [x] Ett “CSS i JS“ lib skall användas för att skriva CSS (ex JSS, Styled-Components, mm).
 - [x] Data från ett web-API hämtas och visas på sidan.
-
-_Gjorda krav ska kryssas för._
 
 ---
 
