@@ -8,11 +8,11 @@ interface SearchBarProps {
 
 const SearchBar = ({ onSearch }: SearchBarProps) => {
   const [input, setInput] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const handleSearch = () => {
     if (!input.trim()) return;
-    setSearchParams({ search: input });
+    setSearchParams((prev) => ({ ...prev, search: input }));
     onSearch(input);
   };
 

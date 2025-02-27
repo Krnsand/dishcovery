@@ -5,8 +5,16 @@ import { fetchRecipesByIngredients } from "../api/recipeApi";
 import RecipeList from "../components/RecipeList";
 import SearchBar from "../components/SearchBar";
 
+interface Recipe {
+  id: number;
+  title: string;
+  image: string;
+  extendedIngredients?: { name: string }[];
+  instructions?: string;
+}
+
 const Home = () => {
-  const [recipes, setRecipes] = useState<any[]>([]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [searchParams] = useSearchParams();
 
@@ -48,8 +56,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background: ${(props) => props.theme.colors.gradient};
   min-height: 100vh;
+  background: ${(props) => props.theme.colors.gradient};
 `;
 
 const Title = styled.h1`
@@ -84,3 +92,6 @@ const HomeText = styled.p`
   margin-bottom: 20px;
   width: 60%;
 `;
+
+// RECIPE PAGE IS NOT HOME PAGE CHANGE IIIIIITTTTTTTT
+// STICKY HEADERRRRRRR

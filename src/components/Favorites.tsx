@@ -2,11 +2,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+interface Recipe {
+  id: number;
+  title: string;
+  image: string;
+}
+
 const Favorites = () => {
-  const [favorites, setFavorites] = useState<any[]>([]);
+  const [favorites, setFavorites] = useState<Recipe[]>([]);
 
   useEffect(() => {
-    const savedFavorites = JSON.parse(
+    const savedFavorites: Recipe[] = JSON.parse(
       localStorage.getItem("favorites") || "[]"
     );
     setFavorites(savedFavorites);
@@ -53,8 +59,8 @@ const Container = styled.div`
   align-items: center;
   padding: 20px;
   min-height: 100vh;
+  background: ${(props) => props.theme.colors.gradient};
 `;
-// background-color: ${(props) => props.theme.colors.gradient};
 
 const Title = styled.h1`
   font-size: 2.5rem;

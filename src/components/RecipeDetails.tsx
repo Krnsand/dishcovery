@@ -3,10 +3,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { fetchRecipeDetails } from "../api/recipeApi";
 
+interface Ingredient {
+  id: number;
+  name: string;
+}
+
+interface Recipe {
+  id: number;
+  title: string;
+  image: string;
+  instructions?: string;
+  extendedIngredients?: Ingredient[];
+}
+
 const RecipeDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [recipe, setRecipe] = useState<any>(null);
+  const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -23,10 +36,10 @@ const RecipeDetails = () => {
         if (data && !data.code) {
           setRecipe(data);
 
-          const savedFavorites = JSON.parse(
+          const savedFavorites: Recipe[] = JSON.parse(
             localStorage.getItem("favorites") || "[]"
           );
-          setIsFavorite(savedFavorites.some((fav: any) => fav.id === data.id));
+          setIsFavorite(savedFavorites.some((fav) => fav.id === data.id));
         } else {
           setError("Recipe could not be fetched.");
         }
@@ -41,12 +54,12 @@ const RecipeDetails = () => {
 
   const handleFavoriteToggle = () => {
     if (!recipe) return;
-    let savedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    let savedFavorites: Recipe[] = JSON.parse(
+      localStorage.getItem("favorites") || "[]"
+    );
 
     if (isFavorite) {
-      savedFavorites = savedFavorites.filter(
-        (fav: any) => fav.id !== recipe.id
-      );
+      savedFavorites = savedFavorites.filter((fav) => fav.id !== recipe.id);
     } else {
       savedFavorites.push({
         id: recipe.id,
@@ -74,7 +87,7 @@ const RecipeDetails = () => {
         </Button>
         <IngHeader>Ingredients:</IngHeader>
         <ul>
-          {recipe.extendedIngredients?.map((ingredient: any, index: number) => (
+          {recipe.extendedIngredients?.map((ingredient, index) => (
             <IngredientItem key={index}>{ingredient.name}</IngredientItem>
           )) ?? <p>❌ Ingredients missing.</p>}
         </ul>
