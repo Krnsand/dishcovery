@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -78,13 +79,15 @@ const RecipeDetails = () => {
 
   return (
     <Container>
-      <Button onClick={() => navigate(-1)}>⬅ Go Back</Button>{" "}
       <RecipeContainer>
         <RecipeTitle>{recipe.title}</RecipeTitle>
         <RecipeImage src={recipe.image} alt={recipe.title} />
-        <Button onClick={handleFavoriteToggle}>
-          {isFavorite ? "⭐ Remove from favorites" : "⭐ Add to favorites"}
-        </Button>
+        <ButtonContainer>
+          <Button onClick={() => navigate(-1)}>⬅ Go Back</Button>
+          <Button onClick={handleFavoriteToggle}>
+            {isFavorite ? "⭐ Remove from favorites" : "⭐ Add to favorites"}
+          </Button>
+        </ButtonContainer>
         <IngHeader>Ingredients:</IngHeader>
         <ul>
           {recipe.extendedIngredients?.map((ingredient, index) => (
@@ -92,11 +95,13 @@ const RecipeDetails = () => {
           )) ?? <p>❌ Ingredients missing.</p>}
         </ul>
         <IngHeader>Instructions:</IngHeader>
-        <Instructions>
-          {recipe.instructions
-            ? recipe.instructions
-            : "No instructions available."}
-        </Instructions>
+        <Instructions
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(
+              recipe?.instructions || "No instructions available."
+            ),
+          }}
+        />
       </RecipeContainer>
     </Container>
   );
@@ -108,8 +113,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   min-height: 100vh;
+  background: ${(props) => props.theme.colors.gradient};
 `;
 
 const RecipeContainer = styled.div`
@@ -149,8 +154,15 @@ const IngredientItem = styled.li`
 const Instructions = styled.p`
   font-weight: 900;
   font-size: 20px;
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
   max-width: 700px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
 `;
 
 const Button = styled.button`
@@ -161,5 +173,9 @@ const Button = styled.button`
   color: white;
   border: none;
   border-radius: 5px;
-  margin: 10px 0;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.secondary};
+  }
 `;
