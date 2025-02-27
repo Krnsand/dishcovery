@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../assets/images/logo3.png";
+import logo from "../assets/images/logo.png";
 
 const Navigation = () => {
   return (
@@ -59,5 +59,4 @@ const Logo = styled.img`
   height: 120px;
   width: auto;
   margin-right: auto;
-  margin-left: 2rem;
 `;
