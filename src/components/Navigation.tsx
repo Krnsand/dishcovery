@@ -51,8 +51,8 @@ const MenuIcon = styled.div`
   }
 `;
 
-const LinksContainer = styled.div`
-  display: flex;
+const LinksContainer = styled.div<{ menuOpen: boolean }>`
+  display: flex; /* Se till att den alltid är synlig på desktop */
   gap: 30px;
   position: absolute;
   left: 50%;
@@ -62,7 +62,7 @@ const LinksContainer = styled.div`
     flex-direction: column;
     position: absolute;
     top: 100%;
-    left: 50;
+    left: 50%;
     width: 100%;
     background-color: ${(props) => props.theme.colors.primary};
     text-align: center;

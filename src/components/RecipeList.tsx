@@ -33,7 +33,7 @@ const ListContainer = styled.div`
   gap: 20px;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto;
+  margin-top: 1rem;
 
   @media (max-width: 768px) {
     margin-bottom: 8rem;

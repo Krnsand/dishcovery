@@ -77,7 +77,7 @@ const SubText = styled.h2`
   font-weight: bold;
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
-  margin-bottom: 20px;
+  margin: 0 0 20px 0;
 
   @media (max-width: 768px) {
     font-size: 1.2rem;
