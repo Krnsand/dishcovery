@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import Favorites from "./components/Favorites";
+import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 import RecipeDetails from "./components/RecipeDetails";
 import Home from "./pages/Home";
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/recipe/:id" element={<RecipeDetails />} />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
+      <Footer />
     </ThemeProvider>
   );
 };
