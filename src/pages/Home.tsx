@@ -92,6 +92,3 @@ const HomeText = styled.p`
   margin-bottom: 20px;
   width: 60%;
 `;
-
-// RECIPE PAGE IS NOT HOME PAGE CHANGE IIIIIITTTTTTTT
-// STICKY HEADERRRRRRR

@@ -1,35 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const ListContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-`;
-
-const RecipeCard = styled.div`
-  text-align: center;
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const RecipeImage = styled.img`
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-`;
-
 interface RecipeListProps {
   recipes: { id: number; title: string; image: string }[];
   hasSearched: boolean;
@@ -55,3 +26,32 @@ const RecipeList = ({ recipes, hasSearched }: RecipeListProps) => {
 };
 
 export default RecipeList;
+
+const ListContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+`;
+
+const RecipeCard = styled.div`
+  text-align: center;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const RecipeImage = styled.img`
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
