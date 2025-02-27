@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Title>🍽️ DISHcovery 🍽️ </Title>
+      <Title>🍽️ DISHcovery 🍽️</Title>
       <SubText>Discover your food at home</SubText>
       <ContentWrapper>
         <SearchBar onSearch={() => {}} />
@@ -38,8 +38,7 @@ const Home = () => {
         <HomeText>
           Got ingredients but no idea what to cook? Let DISHcovery do the work!
           Simply enter what you have in your kitchen, and we'll find delicious
-          recipes that match. No more food waste, no more last-minute grocery
-          runs—just easy, tasty meals made with what you already own.
+          recipes that match.
           <br />
           <br />
           Start discovering now and turn your pantry into endless possibilities!
@@ -66,15 +65,22 @@ const Title = styled.h1`
   text-align: center;
   margin-bottom: 0;
   font-family: Borel;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const SubText = styled.h2`
   font-size: 1.5rem;
-  font-weight: 900px;
+  font-weight: bold;
   color: ${(props) => props.theme.colors.primary};
   text-align: center;
   margin-bottom: 20px;
-  margin-top: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -83,6 +89,11 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    height: 50px;
+  }
 `;
 
 const HomeText = styled.p`
@@ -91,4 +102,9 @@ const HomeText = styled.p`
   text-align: center;
   margin-bottom: 20px;
   width: 60%;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    width: 90%;
+  }
 `;

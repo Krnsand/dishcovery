@@ -57,9 +57,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 20px 20px 6rem 20px;
   min-height: 100vh;
   background: ${(props) => props.theme.colors.gradient};
+
+  @media (max-width: 768px) {
+    padding-right: 40px;
+  }
 `;
 
 const Title = styled.h1`
@@ -68,6 +72,10 @@ const Title = styled.h1`
   text-align: center;
   margin-bottom: 20px;
   font-family: Borel;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -86,7 +94,7 @@ const RecipeList = styled.ul`
 const RecipeItem = styled.li`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   background: white;
   padding: 10px;
   border-radius: 8px;
@@ -102,9 +110,13 @@ const RecipeItem = styled.li`
 
 const RecipeImage = styled.img`
   width: 130px;
-  height: 100px;
+  height: auto;
   border-radius: 8px;
   margin-right: 10px;
+
+  @media (max-width: 768px) {
+    width: 100px;
+  }
 `;
 
 const RecipeTitle = styled(Link)`

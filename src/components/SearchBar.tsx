@@ -45,7 +45,6 @@ const SearchContainer = styled.div`
   gap: 10px;
   width: 100%;
   max-width: 600px;
-  margin-bottom: 20px;
 `;
 
 const Input = styled.input`

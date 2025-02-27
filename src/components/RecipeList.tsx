@@ -34,6 +34,10 @@ const ListContainer = styled.div`
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    margin-bottom: 8rem;
+  }
 `;
 
 const RecipeCard = styled.div`

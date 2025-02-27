@@ -1,16 +1,27 @@
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/images/logo.png";
 
 const Navigation = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <Nav>
       <NavLink to="/">
         <Logo src={logo} alt="Dishcovery Logo" />
       </NavLink>
-      <LinksContainer>
-        <StyledNavLink to="/">Home</StyledNavLink>
-        <StyledNavLink to="/favorites">Favorites</StyledNavLink>
+      <MenuIcon onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <FiX /> : <FiMenu />}
+      </MenuIcon>
+      <LinksContainer menuOpen={menuOpen}>
+        <StyledNavLink to="/" onClick={() => setMenuOpen(false)}>
+          Home
+        </StyledNavLink>
+        <StyledNavLink to="/favorites" onClick={() => setMenuOpen(false)}>
+          Favorites
+        </StyledNavLink>
       </LinksContainer>
     </Nav>
   );
@@ -23,8 +34,20 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.secondary};
-  padding: 10px;
+  padding: 10px 20px;
   color: ${(props) => props.theme.colors.background};
+  position: relative;
+`;
+
+const MenuIcon = styled.div`
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const LinksContainer = styled.div`
@@ -35,10 +58,16 @@ const LinksContainer = styled.div`
   transform: translateX(-50%);
 
   @media (max-width: 768px) {
-    position: static;
-    transform: none;
-    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 50;
     width: 100%;
+    background-color: ${(props) => props.theme.colors.secondary};
+    text-align: center;
+    padding: 10px 0;
+    display: ${({ menuOpen }) => (menuOpen ? "flex" : "none")};
+    z-index: 999;
   }
 `;
 
@@ -52,6 +81,11 @@ const StyledNavLink = styled(NavLink)`
   &.active {
     text-decoration: underline;
     color: ${(props) => props.theme.colors.primary};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    padding: 10px 0;
   }
 `;
 

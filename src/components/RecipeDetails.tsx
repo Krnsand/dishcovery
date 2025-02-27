@@ -124,6 +124,10 @@ const RecipeContainer = styled.div`
   flex-direction: column;
   padding: 0 3rem;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const RecipeTitle = styled.h1`
@@ -156,6 +160,10 @@ const Instructions = styled.p`
   font-size: 20px;
   margin-bottom: 8rem;
   max-width: 700px;
+
+  @media (max-width: 768px) {
+    padding: 0 2rem;
+  }
 `;
 
 const ButtonContainer = styled.div`
