@@ -93,6 +93,11 @@ const RecipeItem = styled.li`
   width: 100%;
   max-width: 600px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const RecipeImage = styled.img`
